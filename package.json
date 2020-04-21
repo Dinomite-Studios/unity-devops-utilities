@@ -1,6 +1,6 @@
 {
     "name": "@dinomite-studios/unity-utilities",
-    "version": "1.2.4",
+    "version": "1.2.5",
     "description": "Utility package for DevOps operations related to the Unity engine.",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
@@ -27,9 +27,11 @@
     "dependencies": {
         "@dinomite-studios/unity-project-version": "^1.0.4",
         "@types/fs-extra": "^8.0.0",
+        "@types/sanitize-filename": "^1.6.3",
         "@types/tail": "^2.0.0",
         "azure-pipelines-task-lib": "^2.9.3",
         "fs-extra": "^8.1.0",
+        "sanitize-filename": "^1.6.3",
         "tail": "^2.0.3"
     },
     "devDependencies": {
