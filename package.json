@@ -1,6 +1,6 @@
 {
     "name": "@dinomite-studios/unity-utilities",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "description": "Utility package for DevOps operations related to the Unity engine.",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
@@ -15,15 +15,16 @@
     ],
     "repository": {
         "type": "git",
-        "url": "https://github.com/Dinomite-Studios/unity-azure-pipelines-tasks"
+        "url": "https://github.com/Dinomite-Studios/unity-devops-utilities/"
     },
     "bugs": {
-        "url": "https://github.com/Dinomite-Studios/unity-azure-pipelines-tasks/issues"
+        "url": "https://github.com/Dinomite-Studios/unity-devops-utilities/issues"
     },
-    "homepage": "https://dinomite-studios.github.io/unity-azure-pipelines-tasks/",
+    "homepage": "https://github.com/Dinomite-Studios/unity-devops-utilities/",
     "author": "Dinomite Studios",
     "license": "MIT",
     "dependencies": {
+        "@dinomite-studios/unity-project-version": "^1.0.4",
         "@types/fs-extra": "^8.0.0",
         "@types/tail": "^2.0.0",
         "azure-pipelines-task-lib": "^2.9.3",
