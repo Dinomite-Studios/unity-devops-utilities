@@ -1,12 +1,13 @@
 {
     "name": "@dinomite-studios/unity-utilities",
-    "version": "1.2.2",
+    "version": "1.2.4",
     "description": "Utility package for DevOps operations related to the Unity engine.",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "scripts": {
         "build": "tsc",
-        "publish": "npm publish --access public"
+        "publish": "npm publish --access public",
+        "build-and-publish": "npm run build && npm run publish"
     },
     "keywords": [
         "unity",
@@ -33,7 +34,7 @@
     },
     "devDependencies": {
         "typescript": "3.8.3",
-        "@types/node": "^13.9.8",
+        "@types/node": "^13.13.1",
         "@types/q": "^1.5.2"
     }
 }
