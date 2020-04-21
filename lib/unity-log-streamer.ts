@@ -39,7 +39,7 @@ export class UnityLogStreamer {
             }
 
             while (size > UnityLogStreamer.getTailPos(logTail) || UnityLogStreamer.getTailQueueLength(logTail) > 0) {
-                UnityLogStreamer.sleep(2089);
+                await UnityLogStreamer.sleep(2089);
             }
 
             logTail.unwatch();
@@ -80,8 +80,8 @@ export class UnityLogStreamer {
      * Halts execution for a given time.
      * @param ms Sleep duration in milliseconds.
      */
-    public static sleep(ms: number): void {
-        Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, ms);
+    public static sleep(ms: number): Promise<void> {
+        return new Promise(resolve => setTimeout(resolve, ms));
     }
 
     private static getTailPos(t: any): number {
