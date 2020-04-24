@@ -22,9 +22,9 @@ export class UnityPathTools {
             }
 
             return environmentVariablePath;
-        } else if (mode === 'customUnityEditorsPath') {
+        } else if (mode === 'specify') {
             if (!customPath) {
-                throw Error('Invalid custom Unity editors folder path specified.');
+                throw Error(`${customPath} is not a valid Unity editors folder path.`);
             }
 
             return customPath;
