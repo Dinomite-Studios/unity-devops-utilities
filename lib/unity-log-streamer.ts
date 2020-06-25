@@ -25,10 +25,15 @@ export class UnityLogStreamer {
             fsWatchOptions: { interval: 1009 }
         });
 
-        logTail.on("line", function (data) { console.log(data); });
-        logTail.on("error", function (error) { console.log('ERROR: ', error); });
-
         let result = -1;
+
+        logTail.on("line", function (data) { 
+            console.log(data); 
+            if (data.includes('Crash!!!')) {
+                result = -1;
+            }
+        });
+        logTail.on("error", function (error) { console.log('ERROR: ', error); });
 
         try {
             result = await execResult;
