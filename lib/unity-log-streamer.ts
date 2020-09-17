@@ -25,18 +25,17 @@ export class UnityLogStreamer {
             fsWatchOptions: { interval: 1009 }
         });
 
-        let result = -1;
-
+        let exitCode = -1;
+        logTail.on("error", function (error) { console.log('ERROR: ', error); });
         logTail.on("line", function (data) { 
             console.log(data); 
             if (data.includes('Crash!!!')) {
-                result = -1;
+                exitCode = -1;
             }
         });
-        logTail.on("error", function (error) { console.log('ERROR: ', error); });
 
         try {
-            result = await execResult;
+            exitCode = await execResult;
 
             let size = 0;
             if (fs.existsSync(logFilePath)) {
@@ -49,7 +48,7 @@ export class UnityLogStreamer {
 
             logTail.unwatch();
 
-            return result;
+            return exitCode;
         } catch (e) {
             if (logTail != null) {
                 logTail.unwatch();
@@ -59,15 +58,15 @@ export class UnityLogStreamer {
             // The unity exe might return the error code 3221225477 and throw an
             // error because it can't write the license file on the agent, due to
             // missing access rights. Nontheless the Unity process has finished
-            // its operation at this point and can we ignore this specific error,
+            // its operation at this point and we can ignore this specific error,
             // since the license is going to get released anyways after the pipeline
             // has finished.
             if (e instanceof Error && e.message.includes('exit code 3221225477')) {
-                result = 0;
+                exitCode = 0;
             }
 
-            if (result === 0) {
-                return result;
+            if (exitCode === 0) {
+                return exitCode;
             }
 
             throw e;
